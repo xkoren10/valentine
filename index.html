@@ -1,64 +1,144 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>VALENTINE'S DAY</title>
- <link
-      rel="icon"
-      type="image/png"
-      sizes="100%"
-      href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png"
-    />
-<style>
-p {
-text-align: center;
-font-size: 33px;
-font-family: Georgia, serif;
-}
-img {
-display: block;
-margin: 0 auto;
-width: 23%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALENTINE'S DAY</title>
+    <link rel="icon" type="image/png" sizes="100%" href="https://cdn-icons-png.flaticon.com/512/9444/9444300.png" />
+    
+    <style>
+        /* General Page Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebf0;
+            margin: 0;
+            text-align: center;
+            font-family: Georgia, serif;
+        }
+
+        /* Valentine's Message */
+        p {
+            font-size: 33px;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        /* Centered GIF */
+        .tenor-gif-embed {
+            max-width: 500px;
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        /* Buttons Container */
+        .button-container {
+            margin-top: 20px;
+        }
+
+        /* Button Styling */
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            background-color: #ff4081;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 120px; /* Fixed width */
+            text-align: center;
+            display: inline-block;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        /* Popup (Modal) Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .popup img {
+            width: 200px;
+            height: auto;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: #e91e63;
+        }
+    </style>
 </head>
 <body>
- <p>
-  Will you be my Valentine?
- </p>
-<img src="https://tenor.com/view/cat-cute-kisses-hearts-kitty-gif-16307255">
-</body>
-<title>Buttons</title>
-<style>
-#Button1 {
-position: fixed;
-top: 70%;
-left: 55%;
-transform: translate(-50%, -50%);
-}
-#Button2 {
-position: absolute;
- left: 39%;
-  top: 68%;
-}
-</style>
-<body>
-<button id="Button1">Yes!</button>
-<button id="Button2">No</button>
-<script>
-const Button2 = document.getElementById('Button2');
-let left = 40;
-Button2.addEventListener('mouseover', function() {
-  if(left == 40){
-    left = 48;
-  }else{
-    left = 40;
-  }
-  this.style.left = left + '%';
-});
 
-</script>
-<script>document.getElementById('Button1').addEventListener('click', function() {
-alert('HEHE THANKSSS! I LOVE YOU <3');
-});
-</script>
+    <p>Will you be my Valentine?</p>
+
+    <div class="tenor-gif-embed" data-postid="16307255" data-share-method="host" data-aspect-ratio="1.07023" data-width="50%">
+        <a href="https://tenor.com/view/cat-cute-kisses-hearts-kitty-gif-16307255">Cat Cute GIF</a> from 
+        <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a>
+    </div> 
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <div class="button-container">
+        <button id="Button1">Yes!</button>
+        <button id="Button2" onmouseover="changeText(this)" onmouseout="resetText(this)">No</button>
+    </div>
+
+    <!-- Hidden Popup -->
+    <div id="popup" class="popup">
+        <p>YIPEE! I LOVE YOU ❤️</p>
+        <div class="tenor-gif-embed" data-postid="16606050094708454978" data-share-method="host" data-aspect-ratio="1.02469" data-width="100%"><a href="https://tenor.com/view/cat-gif-16606050094708454978">Cat Sticker</a>from <a href="https://tenor.com/search/cat-stickers">Cat Stickers</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <br>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        // Function to change button text on hover
+        function changeText(button) {
+            button.innerText = "Yes!";
+        }
+
+        // Function to reset button text when mouse leaves
+        function resetText(button) {
+            button.innerText = "No";
+        }
+
+        // Show Popup on Yes Click
+        document.getElementById('Button1').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'block';
+        });
+        document.getElementById('Button2').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'block';
+        });
+
+        // Close Popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
 </body>
 </html>
